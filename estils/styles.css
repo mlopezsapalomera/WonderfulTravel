@@ -1,0 +1,15 @@
+h1 {
+    font-family: Arial, sans-serif;
+    text-align: justify;
+}
+
+#datetime {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: blue;
+    border-radius: 30px;
+    width: 200px;
+    color: white;
+}
