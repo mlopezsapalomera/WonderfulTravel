@@ -9,6 +9,15 @@
 <body>
     <h1>Wonderful Travels</h1>
     <div id="datetime"></div>
+    <form action="travel.controller.php" method="post">
+        <label for="data-viatge">Data</label>
+        <input type="date" name="data-viatge" id="data-viatge">
+        <br>
+        <label for="desti">Destí</label>
+        <select name="continent" id="continent">
+            <option value="">-- Selecciona el continent desitjat --</option>
+        </select>
+    </form>
     <script src="scripts/rellotge.js"></script>
 </body>
 </html>
