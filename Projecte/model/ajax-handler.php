@@ -1,9 +1,13 @@
 <?php
-require_once 'model/database.php';
+require_once 'database.php';
 
 global $conn;
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
+
+//DEBUGG
+$action = 'getContinents';
+
 
 switch ($action) {
     case 'getContinents':

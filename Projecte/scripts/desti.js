@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('ajaxHandler.php?action=getContinents')
+    fetch('model/ajax-handler.php?action=getContinents')
         .then(response => response.json())
         .then(data => {
             if (data.error) {
                 console.error('Error:', data.error);
                 return;
             }
-            const select = document.querySelector('select[name="desti"]');
+            const select = document.querySelector('select[name="continent"]');
             data.forEach(continent => {
                 const option = document.createElement('option');
                 option.value = continent.id;
-                option.textContent = continent.nombre;
+                option.textContent = continent.nom_continent;
                 select.appendChild(option);
             });
         })
