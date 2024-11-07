@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wonderfull Travels</title>
+    <title>Wonderful Travels</title>
     <link rel="stylesheet" href="estils/styles.css">
 </head>
+
 <body>
     <h1>Wonderful Travels</h1>
     <div id="datetime"></div>
-    <form action="travel.controller.php" method="post">
-        <label for="data-viatge">Data</label>
+
+    <!-- Formulario para agregar un viaje -->
+    <form action="travel.model.php" method="post">
+        <label for="nom">Nombre</label>
+        <input type="text" id="nom" name="nom" required>
+        <br>
+
+        <label for="telefon">Número de Teléfono</label>
+        <input type="text" id="telefon" name="telefon" required>
+        <br>
+
+        <label for="data-viatge">Fecha del viaje</label>
         <input type="date" name="data-viatge" id="data-viatge">
         <br>
-        <label for="desti">Destí</label>
+
+        <label for="continent">Continente</label>
         <select name="continent" id="continent">
-            <option value="">-- Selecciona el continent desitjat --</option>
+            <option value="">-- Selecciona el continente --</option>
         </select>
+        <br>
+
+        <label for="pais">País</label>
+        <select name="pais" id="pais">
+            <option value="">-- Selecciona el país --</option>
+        </select>
+        <br>
+
+        <label for="preu">Precio</label>
+        <input type="text" id="preu" name="preu" readonly disabled>
+        <br>
+
+        <label for="num-persones">Número de personas</label>
+        <input type="number" name="num-persones" id="num-persones" min="1">
+        <br>
+
+        <label for="descompte">Aplicar 20% de descuento</label>
+        <input type="checkbox" name="descompte" id="descompte">
+        <br>
+
+        <!-- Botón Afegueix para agregar el viaje -->
+        <button type="submit" name="action" value="addTravel">Afegueix</button>
     </form>
+
     <script src="./scripts/desti.js"></script>
     <script src="scripts/rellotge.js"></script>
 </body>
+
 </html>

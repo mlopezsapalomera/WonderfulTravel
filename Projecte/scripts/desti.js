@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Cargar continentes
     fetch('model/ajax-handler.php?action=getContinents')
         .then(response => response.json())
         .then(data => {
@@ -6,13 +7,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error:', data.error);
                 return;
             }
-            const select = document.querySelector('select[name="continent"]');
+            const continentSelect = document.querySelector('select[name="continent"]');
             data.forEach(continent => {
                 const option = document.createElement('option');
                 option.value = continent.id;
                 option.textContent = continent.nom_continent;
-                select.appendChild(option);
+                continentSelect.appendChild(option);
             });
         })
         .catch(error => console.error('Error:', error));
+    
+    // Cargar países al seleccionar un continente
+    document.getElementById('continent').addEventListener('change', (event) => {
+        const continentId = event.target.value;
+        const paisSelect = document.getElementById('pais');
+        paisSelect.innerHTML = '<option value="">-- Selecciona el país --</option>';
+        document.getElementById('preu').value = '';  // Limpiar campo de precio
+
+        if (continentId) {
+            paisSelect.disabled = false;
+            fetch(`model/ajax-handler.php?action=getCountries&continent_id=${continentId}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(pais => {
+                        const option = document.createElement('option');
+                        option.value = pais.id;
+                        option.textContent = pais.nom_pais;
+                        paisSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            paisSelect.disabled = true;
+        }
+    });
+
+    // Mostrar el precio al seleccionar un país
+    document.getElementById('pais').addEventListener('change', (event) => {
+        const paisId = event.target.value;
+        if (paisId) {
+            fetch(`model/ajax-handler.php?action=getPrice&pais_id=${paisId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.preu) {
+                        document.getElementById('preu').value = data.preu;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            document.getElementById('preu').value = '';
+        }
+    });
 });
