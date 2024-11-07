@@ -22,7 +22,7 @@ jspm_packages/
 .DS_Store
 
 # XAMPP specific files
-*.sql
+# *.sql
 *.sqlite
 
 # IDE specific files
