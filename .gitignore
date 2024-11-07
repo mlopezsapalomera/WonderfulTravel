@@ -36,5 +36,5 @@ jspm_packages/
 dist/
 build/
 
-#TypeScript config file
-.tsconfig.json
+# TypeScript configuration
+tsconfig.json
