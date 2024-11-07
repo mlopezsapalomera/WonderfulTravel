@@ -57,8 +57,4 @@ function getPrice($conn, $paisId) {
         echo json_encode(['error' => $e->getMessage()]);
     }
 }
-
-function getCountries() {
-    $sql = "SELECT nom_pais, preu, continent_id"
-}
 ?>
