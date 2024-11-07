@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2024 a las 15:34:51
+-- Tiempo de generación: 07-11-2024 a las 18:34:48
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -33,7 +33,20 @@ CREATE TABLE IF NOT EXISTS `continents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom_continent` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `continents`
+--
+
+INSERT INTO `continents` (`id`, `nom_continent`) VALUES
+(1, 'África'),
+(2, 'América del Norte'),
+(3, 'América del Sur'),
+(4, 'Antártida'),
+(5, 'Asia'),
+(6, 'Europa'),
+(7, 'Oceanía');
 
 -- --------------------------------------------------------
 

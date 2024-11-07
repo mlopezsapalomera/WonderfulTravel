@@ -14,7 +14,7 @@ function updateDateTime() {
     const month = now.getMonth() + 1; // Los meses en JavaScript son base 0, por eso sumamos 1
     const year = now.getFullYear();
 
-    const dateTimeString = `${hour}:${minute}:${second} ${ampm} ${day} ${'\n'} ${date}/${month}/${year}`;
+    const dateTimeString = `${hour}:${minute}:${second} ${ampm} ${day}\n${date}/${month}/${year}`;
 
     document.getElementById('datetime').textContent = dateTimeString;
 }
@@ -22,3 +22,5 @@ function updateDateTime() {
 // Actualizar cada segundo
 setInterval(updateDateTime, 1000);
 updateDateTime(); // Inicializar al cargar la página
+
+
