@@ -17,3 +17,12 @@ h1 {
     width: 200px;
     white-space: pre-line;
 }
+
+/* estils/styles.css */
+.imagen-pais {
+    transition: transform 0.3s;
+}
+
+.imagen-pais:hover {
+    transform: scale(1.2);
+}
