@@ -1,38 +1,39 @@
 <?php
-require_once 'database.php';
-global $conn;
+
+require "model/travel.model.php";
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
+// DEBUGGING
+$action = 'ajaxContinents';
+
 switch ($action) {
-    case 'getContinents':
-        getContinents($conn);
+    case 'ajaxContinents':
+        ajaxContinents();
         break;
-    case 'getCountries':
+    case 'ajaxCountries':
         $continentId = isset($_GET['continent_id']) ? $_GET['continent_id'] : '';
-        getCountries($conn, $continentId);
+        ajaxCountries($continentId);
         break;
-    case 'getPrice':
+    case 'ajaxPrice':
         $paisId = isset($_GET['pais_id']) ? $_GET['pais_id'] : '';
-        getPrice($conn, $paisId);
+        ajaxPrice($paisId);
         break;
     default:
         echo json_encode(['error' => 'Acción no válida']);
         break;
 }
 
-function getContinents($conn) {
+function ajaxContinents() {
     try {
-        $sql = "SELECT id, nom_continent FROM continents";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        $continents = getContinents();
+        echo json_encode($continents);
     } catch (PDOException $e) {
         echo json_encode(['error' => $e->getMessage()]);
     }
 }
 
-function getCountries($conn, $continentId) {
+function ajaxCountries($conn, $continentId) {
     try {
         $sql = "SELECT id, nom_pais FROM paisos WHERE continent_id = :continent_id";
         $stmt = $conn->prepare($sql);
@@ -44,8 +45,7 @@ function getCountries($conn, $continentId) {
     }
 }
 
-
-function getPrice($conn, $paisId) {
+function ajaxPrice($conn, $paisId) {
     try {
         $sql = "SELECT preu FROM paisos WHERE id = :pais_id";
         $stmt = $conn->prepare($sql);

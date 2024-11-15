@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Cargar continentes
-    fetch('model/ajax-handler.php?action=getContinents')
+    fetch('controlador/ajax-handler.php?action=ajaxContinents')
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (continentId) {
             paisSelect.disabled = false;
-            fetch(`model/ajax-handler.php?action=getCountries&continent_id=${continentId}`)
+            fetch(`controlador/ajax-handler.php?action=ajaxCountries&continent_id=${continentId}`)
                 .then(response => response.json())
                 .then(data => {
                     data.forEach(pais => {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('pais').addEventListener('change', (event) => {
         const paisId = event.target.value;
         if (paisId) {
-            fetch(`model/ajax-handler.php?action=getPrice&pais_id=${paisId}`)
+            fetch(`controlador/ajax-handler.php?action=ajaxPrice&pais_id=${paisId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data && data.preu) {

@@ -1,8 +1,22 @@
 <?php
-require_once 'database.php'; // Asegúrate de que la conexión esté correcta
+
+require_once 'database.php';
+
+function getContinents($conn) {
+    global $conn;
+    try {
+        $sql = "SELECT id, nom_continent FROM continents";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return ($stmt->fetchAll(PDO::FETCH_ASSOC));
+    } catch (PDOException $e) {
+        return ['error' => $e->getMessage()];
+    }
+}
 
 // Función para obtener el precio base del país seleccionado
 function getCountryPrice($pais_id) {
+    global $conn;
     global $conn;
     $sql = "SELECT preu_base FROM paisos WHERE id = :pais_id";
     $stmt = $conn->prepare($sql);
