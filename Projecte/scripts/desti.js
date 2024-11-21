@@ -58,4 +58,5 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('preu').value = '';
         }
     });
+    // njdinvjeinvjewnvjiewnjnfijewn
 });
