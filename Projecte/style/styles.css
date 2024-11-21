@@ -1,6 +1,5 @@
 body {
-    justify-content: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #ff7e5f, #feb47b);
     color: #333;
     margin: 0;
@@ -8,13 +7,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
 header {
     width: 100%;
     background-color: #333;
-    padding: 10px 0;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 nav ul {
@@ -26,26 +28,29 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    transition: color 0.3s;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
 }
 
 nav ul li a:hover {
     color: #ff7e5f;
+    transform: scale(1.1);
 }
 
 h1 {
     font-family: 'Arial Black', sans-serif;
     text-align: center;
     color: #fff;
-    margin-top: 20px;
+    margin-top: 30px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 36px;
 }
 
 #datetime {
@@ -55,56 +60,66 @@ h1 {
     font-weight: bold;
     color: white;
     background-color: rgba(0, 0, 255, 0.7);
-    border-radius: 20px;
-    width: 200px;
-    white-space: pre-line;
-    padding: 10px;
-    margin: 20px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    width: 220px;
+    padding: 12px;
+    margin: 30px 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 form {
     background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    margin-bottom: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    width: 320px;
+    margin-bottom: 30px;
 }
 
 form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
+    color: #333;
 }
 
 form input, form select {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+form input:focus, form select:focus {
+    border-color: #ff7e5f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 126, 95, 0.6);
 }
 
 form button {
     background-color: #ff7e5f;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 form button:hover {
     background-color: #feb47b;
+    transform: scale(1.05);
 }
 
 .imagen-pais {
-    transition: transform 0.3s;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .imagen-pais:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
