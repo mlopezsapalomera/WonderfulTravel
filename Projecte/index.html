@@ -22,41 +22,53 @@
 
     <!-- Formulario para agregar un viaje -->
     <form action="travel.model.php" method="post">
-        <label for="nom">Nombre</label>
-        <input type="text" id="nom" name="nom" required>
-        <br>
+        <div class="form-group">
+            <label for="nom">Nombre</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
 
-        <label for="telefon">Número de Teléfono</label>
-        <input type="text" id="telefon" name="telefon" required>
-        <br>
+        <div class="form-group">
+            <label for="telefon">Número de Teléfono</label>
+            <input type="text" id="telefon" name="telefon" required>
+        </div>
 
-        <label for="data-viatge">Fecha del viaje</label>
-        <input type="date" name="data-viatge" id="data-viatge">
-        <br>
+        <div class="form-group full-width">
+            <label for="data-viatge">Fecha del viaje</label>
+            <input type="date" name="data-viatge" id="data-viatge">
+        </div>
 
-        <label for="continent">Continente</label>
-        <select name="continent" id="continent">
-            <option value="">-- Selecciona el continente --</option>
-        </select>
-        <br>
+        <div class="form-group">
+            <label for="continent">Continente</label>
+            <select name="continent" id="continent">
+                <option value="">-- Selecciona el continente --</option>
+            </select>
+        </div>
 
-        <label for="pais">País</label>
-        <select name="pais" id="pais">
-            <option value="">-- Selecciona el país --</option>
-        </select>
-        <br>
+        <div class="form-group">
+            <label for="pais">País</label>
+            <select name="pais" id="pais">
+                <option value="">-- Selecciona el país --</option>
+            </select>
+        </div>
 
-        <label for="preu">Precio</label>
-        <input type="text" id="preu" name="preu" readonly disabled>
-        <br>
+        <div id="pais-imagen">
+            <p>Espacio reservado para la imagen del país</p>
+        </div>
 
-        <label for="num-persones">Número de personas</label>
-        <input type="number" name="num-persones" id="num-persones" min="1">
-        <br>
+        <div class="form-group">
+            <label for="preu">Precio</label>
+            <input type="text" id="preu" name="preu" readonly disabled>
+        </div>
 
-        <label for="descompte">Aplicar 20% de descuento</label>
-        <input type="checkbox" name="descompte" id="descompte">
-        <br>
+        <div class="form-group">
+            <label for="num-persones">Número de personas</label>
+            <input type="number" name="num-persones" id="num-persones" min="1">
+        </div>
+
+        <div class="form-group full-width">
+            <label for="descompte">Aplicar 20% de descuento</label>
+            <input type="checkbox" name="descompte" id="descompte">
+        </div>
 
         <!-- Botón Afegueix para agregar el viaje -->
         <button type="submit" name="action" value="addTravel">Afegueix</button>

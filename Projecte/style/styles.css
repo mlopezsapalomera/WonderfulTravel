@@ -8,10 +8,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Cambiado a flex-start para alinear elementos al inicio */
+    justify-content: flex-start;
     min-height: 100vh;
     box-sizing: border-box;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
 header {
@@ -20,10 +20,10 @@ header {
     padding: 15px 0;
     margin-top: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    position: fixed; /* Fija el nav en la parte superior */
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Asegura que el nav esté por encima de otros elementos */
+    z-index: 1000;
 }
 
 nav ul {
@@ -62,7 +62,7 @@ nav ul li a:hover {
     width: 220px;
     padding: 12px;
     margin: 10px 0;
-    margin-top: 70px; /* Añade margen superior para evitar que se superponga con el nav */
+    margin-top: 70px;
     margin-bottom: 5px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -71,7 +71,6 @@ h1.titulo {
     color: white;
     margin-top: 5px;
     margin-bottom: 20px;
-    
 }
 
 form {
@@ -80,7 +79,10 @@ form {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
 }
 
 form label {
@@ -92,20 +94,17 @@ form label {
 form input[type="text"],
 form input[type="date"],
 form input[type="number"],
-form select {
-    width: 90%;
+form select,
+form input[type="checkbox"] {
+    width: 80%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-form input[type="checkbox"] {
-    margin-right: 1px;
-}
-
 form button {
-    width: 100%;
+    grid-column: span 2;
     padding: 10px;
     background-color: #4267B2;
     color: white;
@@ -116,8 +115,27 @@ form button {
 }
 
 form button:hover {
-    background-color: #435df1;
-    color: black;
+    background-color: #365899;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+#pais-imagen {
+    grid-column: span 2;
+    height: 200px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .imagen-pais {
