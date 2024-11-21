@@ -50,7 +50,7 @@ h1 {
     font-family: 'Arial Black', sans-serif;
     text-align: center;
     color: #fff;
-    margin-top: 40px;
+    margin-top: auto;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 36px;
 }
@@ -65,7 +65,7 @@ h1 {
     border-radius: 25px;
     width: 220px;
     padding: 12px;
-    margin: 30px 0;
+    margin: 10px 0;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
