@@ -1,18 +1,52 @@
 <?php
-const DB_USERNAME = 'root';
-const DB_PASSWORD = '';
-const DB_NAME = 'wonderful_travel';
-const DB_HOST = '127.0.0.1';
-const DB_CHARSET = 'utf8mb4';
+class Database {
+    private static $instance = null;
+    private $conn;
+    private $config;
 
+    private function __construct() {
+        $this->config = require_once __DIR__ . '/../config/env.php';
+        $this->connect();
+    }
+
+    public static function getInstance() {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    private function connect() {
+        try {
+            $dsn = "mysql:host={$this->config['DB_HOST']};dbname={$this->config['DB_NAME']};charset={$this->config['DB_CHARSET']}";
+            
+            $this->conn = new PDO(
+                $dsn, 
+                $this->config['DB_USERNAME'], 
+                $this->config['DB_PASSWORD']
+            );
+            
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            throw new Exception("Error de conexión: " . $e->getMessage());
+        }
+    }
+
+    public function getConnection() {
+        return $this->conn;
+    }
+
+    // Prevenir la clonación del objeto
+    private function __clone() {}
+
+    // Prevenir la deserialización
+    private function __wakeup() {}
+}
+
+// Crear una instancia global de la conexión para mantener compatibilidad con el código existente
 try {
-    // Generar el DSN->(Data Source Name)
-    $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
-
-    // Creem una nova connexió PDO
-    $conn = new PDO($dsn, DB_USERNAME, DB_PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Error al conectar a la base de datos: " . $e->getMessage();
+    $conn = Database::getInstance()->getConnection();
+} catch (Exception $e) {
+    echo $e->getMessage();
     die();
 }
