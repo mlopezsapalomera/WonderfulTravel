@@ -1,0 +1,38 @@
+name: Deploy to Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to FTP server
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ftp.marcoslopez.cat
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: /
+        exclude: |
+          .git*
+          .git/
+          .github/
+          .gitignore
+          .DS_Store
+          node_modules/
+          *.log
+          *.tmp
+          *.bak
+          *.swp
+          package-lock.json 
+          LICENSE
+          README.md
+          
