@@ -1,4 +1,5 @@
 <?php
+// https://adminbbdd.dondominio.com/index.php?route=/&route=%2F&db=ddb238704
 class Database {
     private static $instance = null;
     private $conn;
