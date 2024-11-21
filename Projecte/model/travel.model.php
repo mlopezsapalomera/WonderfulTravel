@@ -17,7 +17,6 @@ function getContinents($conn) {
 // Función para obtener el precio base del país seleccionado
 function getCountryPrice($pais_id) {
     global $conn;
-    global $conn;
     $sql = "SELECT preu_base FROM paisos WHERE id = :pais_id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':pais_id', $pais_id);

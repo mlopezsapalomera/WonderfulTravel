@@ -1,6 +1,6 @@
-let formato24 = false;
+export let formato24 = false;
 
-function updateDateTime() {
+export function updateDateTime() {
     const now = new Date();
     const days = ['Diumenge', 'Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte'];
 
@@ -25,10 +25,13 @@ function updateDateTime() {
     document.getElementById('datetime').textContent = dateTimeString;
 }
 
-document.getElementById('datetime').addEventListener('dblclick', () => {
-    formato24 = !formato24;
+// Inicializar el reloj cuando se importe
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('datetime').addEventListener('dblclick', () => {
+        formato24 = !formato24;
+        updateDateTime();
+    });
+
+    setInterval(updateDateTime, 1000);
     updateDateTime();
 });
-
-setInterval(updateDateTime, 1000);
-updateDateTime(); // Inicializar al cargar la página
