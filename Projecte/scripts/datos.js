@@ -35,4 +35,5 @@ const ofertas = [
         fechas: ['2025-01-15', '2025-02-10'],
         pais_id: 5
     }
+    // AKSJDNIASHFÖIASHFÏOH
 ];
