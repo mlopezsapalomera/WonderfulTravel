@@ -3,22 +3,27 @@ body {
     background: url('../img/viajes.jpg') no-repeat center center fixed;
     color: #333;
     background-size: cover;
-    backdrop-filter: blur(10px);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Cambiado a flex-start para alinear elementos al inicio */
     min-height: 100vh;
     box-sizing: border-box;
+    backdrop-filter: blur(10px);
 }
 
 header {
     width: 100%;
     background-color: #333;
     padding: 15px 0;
+    margin-top: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: fixed; /* Fija el nav en la parte superior */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que el nav esté por encima de otros elementos */
 }
 
 nav ul {
@@ -46,15 +51,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-h1 {
-    font-family: 'Arial Black', sans-serif;
-    text-align: center;
-    color: #fff;
-    margin-top: auto;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 36px;
-}
-
 #datetime {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -66,15 +62,25 @@ h1 {
     width: 220px;
     padding: 12px;
     margin: 10px 0;
+    margin-top: 70px; /* Añade margen superior para evitar que se superponga con el nav */
+    margin-bottom: 5px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+h1.titulo {
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    
+}
+
 form {
+    margin-top: 10px;
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 300px;
 }
 
 form label {
@@ -123,4 +129,3 @@ form button:hover {
 .imagen-pais:hover {
     transform: scale(1.15);
 }
-
