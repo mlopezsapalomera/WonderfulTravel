@@ -1,3 +1,5 @@
+import { imagenesPaises } from './imagenes-paises.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // Cargar continentes
     fetch('controlador/ajax-handler.php?action=ajaxContinents')
@@ -42,10 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mostrar el precio al seleccionar un país
+    // Actualizar imagen y precio al seleccionar un país
     document.getElementById('pais').addEventListener('change', (event) => {
         const paisId = event.target.value;
+        const paisImagen = document.getElementById('pais-imagen');
+
         if (paisId) {
+            // Actualizar precio
             fetch(`controlador/ajax-handler.php?action=ajaxPrice&pais_id=${paisId}`)
                 .then(response => response.json())
                 .then(data => {
@@ -54,8 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 })
                 .catch(error => console.error('Error:', error));
+
+            // Actualizar imagen
+            if (imagenesPaises[paisId]) {
+                paisImagen.innerHTML = `<img src="${imagenesPaises[paisId]}" alt="Imagen del país" class="imagen-pais" style="max-width: 100%; max-height: 200px;">`;
+            } else {
+                paisImagen.innerHTML = '<p>Imagen no disponible</p>';
+            }
         } else {
             document.getElementById('preu').value = '';
+            paisImagen.innerHTML = '<p>Espacio reservado para la imagen del país</p>';
         }
     });
 });

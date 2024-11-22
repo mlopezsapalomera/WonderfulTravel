@@ -8,7 +8,6 @@ Database::getInstance()->getConnection();
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // DEBUGGING
-$action = 'ajaxContinents';
 
 switch ($action) {
     case 'ajaxContinents':
