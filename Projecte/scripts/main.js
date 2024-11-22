@@ -1,5 +1,6 @@
 import { ofertas } from './ofertas.js';
 import './rellotge.js';
+import './desti.js';
 
 // Función para mostrar las ofertas
 function mostrarOfertas() {
