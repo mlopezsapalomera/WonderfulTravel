@@ -2,6 +2,7 @@
 // https://adminbbdd.dondominio.com/index.php?route=/&route=%2F&db=ddb238704
 // user: ddb238704
 // pass: )Tsnuolu8d#fsY
+
 class Database {
     private static $instance = null;
     private $conn;
@@ -39,11 +40,6 @@ class Database {
         return $this->conn;
     }
 
-    // Prevenir la clonación del objeto
-    private function __clone() {}
-
-    // Prevenir la deserialización
-    private function __wakeup() {}
 }
 
 // Crear una instancia global de la conexión para mantener compatibilidad con el código existente

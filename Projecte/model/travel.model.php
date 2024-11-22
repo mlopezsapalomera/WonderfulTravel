@@ -1,7 +1,5 @@
 <?php
 
-require_once 'database.php';
-
 function getContinents($conn) {
     global $conn;
     try {
@@ -23,6 +21,15 @@ function getCountryPrice($pais_id) {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['preu_base'] ?? 0; // Devuelve 0 si no se encuentra el precio
+}
+
+// Función para obtener el precio de un país
+function getPrice($conn, $paisId) {
+    $sql = "SELECT preu FROM paisos WHERE id = :pais_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':pais_id', $paisId, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 // Función para insertar el viaje
@@ -72,5 +79,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     // Redirigir de nuevo al index.html
     exit;
+}
+
+function getCountries($conn, $continentId) {
+    
+        $sql = "SELECT id, nom_pais FROM paisos WHERE continent_id = :continent_id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':continent_id', $continentId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
 }
 ?>
